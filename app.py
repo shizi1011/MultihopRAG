@@ -1,6 +1,8 @@
 import streamlit as st
-
 from ingest import FileIngestor
+from dotenv import load_dotenv
+load_dotenv('.env')
+
 
 # Set the title for the Streamlit app
 st.title("Chat with PDF - 🦙 🔗")

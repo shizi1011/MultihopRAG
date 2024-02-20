@@ -35,18 +35,18 @@ class FileIngestor:
         docs = text_splitter.split_documents(documents)
 
         # Create embeddings using Nomic Embeddings
-        # embeddings = NomicEmbeddings(model="nomic-embed-text-v1.5")
+        embeddings = NomicEmbeddings(model="nomic-embed-text-v1.5")
 
         # Create embeddings using OpenAI Embeddings
         # embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
         # Create embeddings using Huggingface Bge Embeddings
-        embeddings_model_name = "BAAI/bge-small-en-v1.5"
-        embeddings_model_kwargs = {"device": "cpu"}
-        embeddings_encode_kwargs = {"normalize_embeddings": True}
-        embeddings = HuggingFaceBgeEmbeddings(
-            model_name=embeddings_model_name, model_kwargs=embeddings_model_kwargs, encode_kwargs=embeddings_encode_kwargs
-        )
+        # embeddings_model_name = "BAAI/bge-small-en-v1.5"
+        # embeddings_model_kwargs = {"device": "cpu"}
+        # embeddings_encode_kwargs = {"normalize_embeddings": True}
+        # embeddings = HuggingFaceBgeEmbeddings(
+        #     model_name=embeddings_model_name, model_kwargs=embeddings_model_kwargs, encode_kwargs=embeddings_encode_kwargs
+        # )
 
         # Create a FAISS vector store and save embeddings
         # db = FAISS.from_documents(docs, embeddings)
@@ -65,7 +65,6 @@ class FileIngestor:
             Chroma().delete_collection()
             db = Chroma.from_documents(
                 docs, embeddings, persist_directory=DB_CHROMA_PATH)
-
 
         # Create retrivever from vector database
         retriever = db.as_retriever()
