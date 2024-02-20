@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import tempfile
-from localllm import Loadllm
+from llm import Loadllm
 from langchain_community.document_loaders import PyMuPDFLoader
 from streamlit_chat import message
 from langchain_community.vectorstores import Chroma, FAISS
@@ -34,13 +34,13 @@ class FileIngestor:
             chunk_size=1000, chunk_overlap=100)
         docs = text_splitter.split_documents(documents)
 
-        # Create embeddings using Nomic Embeddings
+        # Create embeddings using Nomic Embeddings, uncomment code below to use
         embeddings = NomicEmbeddings(model="nomic-embed-text-v1.5")
 
-        # Create embeddings using OpenAI Embeddings
+        # Create embeddings using OpenAI Embeddings, uncomment code below to use
         # embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 
-        # Create embeddings using Huggingface Bge Embeddings
+        # Create embeddings using Huggingface Bge Embeddings, uncomment code below to use
         # embeddings_model_name = "BAAI/bge-small-en-v1.5"
         # embeddings_model_kwargs = {"device": "cpu"}
         # embeddings_encode_kwargs = {"normalize_embeddings": True}
@@ -48,11 +48,11 @@ class FileIngestor:
         #     model_name=embeddings_model_name, model_kwargs=embeddings_model_kwargs, encode_kwargs=embeddings_encode_kwargs
         # )
 
-        # Create a FAISS vector store and save embeddings
+        # Create a FAISS vector store and save embeddings, uncomment code below to use
         # db = FAISS.from_documents(docs, embeddings)
         # db.save_local(DB_FAISS_PATH)
 
-        # Create a Chroma vector store and save embeddings
+        # Create a Chroma vector store and save embeddings, uncomment code below to use
         # db = Chroma.from_documents(
         #     docs, embeddings, persist_directory=DB_CHROMA_PATH)
 
@@ -74,10 +74,6 @@ class FileIngestor:
 
         # Load the language model
         llm = Loadllm.load_llm()
-
-        # Create a conversational chain
-        # chain = ConversationalRetrievalChain.from_llm(
-        #     llm=llm, retriever=db.as_retriever())
 
         contextualize_q_system_prompt = """Given a chat history and the latest user question \
         which might reference context in the chat history, formulate a standalone question \
@@ -117,12 +113,6 @@ class FileIngestor:
             | qa_prompt
             | llm
         )
-        # Function for conversational chat
-        # def conversational_chat(query):
-        #     result = chain(
-        #         {"question": query, "chat_history": st.session_state['history']})
-        #     st.session_state['history'].append((query, result["answer"]))
-        #     return result["answer"]
 
         def conversational_chat(query):
             result = rag_chain.invoke(

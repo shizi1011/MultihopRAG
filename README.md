@@ -1,6 +1,6 @@
 # Chat with PDF
 
-This is a Python project that allows you to chat with a chatbot about the PDF you uploaded using RAG (Retrieval Augmented Generation) technique. The project is built using Langchain and Streamlit framework
+This is a Python project that allows you to chat with a chatbot about the PDF you uploaded using RAG (Retrieval Augmented Generation) technique. The project is built using Langchain and Streamlit framework.
 
 ## Installation
 
