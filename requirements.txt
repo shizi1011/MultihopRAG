@@ -1,0 +1,10 @@
+langchain
+langchain-openai
+langchainhub
+chromadb
+langchain-nomic
+fireworks-ai
+streamlit
+streamlit-chat
+openai
+PyMuPDF
