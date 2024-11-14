@@ -1,6 +1,5 @@
-# Chat with PDF
-
-This is a Python project that allows you to chat with a chatbot about the PDF you uploaded using RAG (Retrieval Augmented Generation) technique. The project is built using Langchain and Streamlit framework.
+# MultihopRAG
+This is a Python project designed as a multihop question-answering chatbot that leverages the Retrieval-Augmented Generation (RAG) technique. It enables users to interact with the chatbot for answering complex, multi-step queries by analyzing the content of uploaded PDFs. The project is implemented using the LangChain and Chainlit frameworks.
 
 ## Installation
 
@@ -9,8 +8,8 @@ To run this project, please follow the steps below:
 1. Clone the repository:
 
 ```shell
-git clone https://github.com/shizi1011/Chat_With_PDF.git
-cd Chat_With_PDF
+git clone https://github.com/shizi1011/MultihopRAG.git
+cd MultihopRAG
 ```
 
 2. Create and activate a virtual environment (optional but recommended):
@@ -33,7 +32,7 @@ pip install -r requirements.txt
 To start the application, run the following command:
 
 ```shell
-streamlit run app.py
+chainlit run app.py
 ```
 
 This will start the Streamlit server and open the application in your default web browser.
